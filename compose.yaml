@@ -1,0 +1,22 @@
+services:
+  laya:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: local/laya-api:0.3.5-cpu
+    environment:
+      LAYA_DEVICE: ${LAYA_DEVICE:-cpu}
+      LAYA_PRELOAD: ${LAYA_PRELOAD:-english}
+      LAYA_MAX_LOADED: ${LAYA_MAX_LOADED:-1}
+      HF_HOME: /models/huggingface
+      HF_TOKEN: ${HF_TOKEN:-}
+      USE_TF: "0"
+    ports:
+      # Local-only by default. Change 127.0.0.1 to 0.0.0.0 for LAN access.
+      - "127.0.0.1:${LAYA_PORT:-8000}:8000"
+    volumes:
+      - laya-model-cache:/models/huggingface
+    restart: unless-stopped
+
+volumes:
+  laya-model-cache:

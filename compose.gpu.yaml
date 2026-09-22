@@ -1,0 +1,9 @@
+services:
+  laya:
+    build:
+      context: .
+      dockerfile: Dockerfile.gpu
+    image: local/laya-api:0.3.5-gpu
+    environment:
+      LAYA_DEVICE: cuda
+    gpus: all
