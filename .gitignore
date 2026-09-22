@@ -6,3 +6,9 @@ __pycache__/
 .pytest_cache/
 .venv/
 .DS_Store
+benchmark-response.json
+benchmarks/result-*.json
+benchmarks/*-stats-*.jsonl
+benchmarks/*-stats-*.csv
+benchmarks/stats-*.txt
+benchmarks/docker-stats-*.txt
